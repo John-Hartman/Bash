@@ -36,6 +36,9 @@ echo "Checking the current version of all appliances"
 echo "Creating the updates directory on all managed hosts"
 /opt/qradar/support/all_servers.sh -C "mkdir -p /media/updates" > /dev/null
 
+echo "Verifying no previous patches are mounted"
+# verify Unmount of any previous updates:
+/opt/qradar/support/all_servers.sh -k "umount /media/updates"
 
 echo "Copying the sfs file to all managed hosts"
 #Copy the file down to all managed hosts:
